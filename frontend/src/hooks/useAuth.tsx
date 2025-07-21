@@ -48,8 +48,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = (token: string) => {
     apiService.setToken(token);
-    // The user will be set when the component re-renders and useEffect runs
-    window.location.href = '/';
+    setUser(null); // force re-fetch
+    // Do NOT use window.location.href = '/';
+    // Let the LoginPage useEffect handle navigation
   };
 
   const logout = async () => {
