@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "tsc && vite build",
+    "postbuild": "cp static.json dist/"
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+} 
