@@ -17,6 +17,7 @@ const LoginPage: React.FC = () => {
     
     if (token) {
       login(token);
+      navigate('/'); // Ensure redirect after login
     } else if (isAuthenticated) {
       navigate('/');
     }
