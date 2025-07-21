@@ -29,18 +29,6 @@ const EmailDetailPage: React.FC = () => {
       
       const result = await apiService.getEmail(emailId);
       
-      // Debug logging
-      console.log('=== Frontend Email Debug ===');
-      console.log('Email ID:', result.email.id);
-      console.log('Subject:', result.email.subject);
-      console.log('Body length:', result.email.body?.length || 0);
-      console.log('HTML body length:', result.email.html_body?.length || 0);
-      console.log('Clean text length:', result.email.clean_text?.length || 0);
-      console.log('Clean text preview:', result.email.clean_text?.substring(0, 100));
-      console.log('HTML body preview:', result.email.html_body?.substring(0, 100));
-      console.log('Category:', result.category);
-      console.log('===========================');
-      
       setEmail(result.email);
       setCategory(result.category || null);
       
@@ -118,12 +106,6 @@ const EmailDetailPage: React.FC = () => {
 
   // Function to safely render email content
   const renderEmailContent = (htmlBody: string, plainBody: string, cleanText: string) => {
-    console.log('=== renderEmailContent Debug ===');
-    console.log('cleanText length:', cleanText?.length || 0);
-    console.log('cleanText preview:', cleanText?.substring(0, 100));
-    console.log('plainBody length:', plainBody?.length || 0);
-    console.log('htmlBody length:', htmlBody?.length || 0);
-
     // Prefer rendering HTML if available
     if (htmlBody && htmlBody.trim().length > 0) {
       const sanitizedHtml = DOMPurify.sanitize(htmlBody);
@@ -357,4 +339,4 @@ const EmailDetailPage: React.FC = () => {
   );
 };
 
-export default EmailDetailPage; 
+export default EmailDetailPage;
